@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.content.Intent
+import android.net.Uri
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,9 +38,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun sentMessage(title: String, to: String, message: String) {
 
-        val intent = Intent(Intent.ACTION_SEND)
+        val intent = Intent(Intent.ACTION_SEND, Uri.parse("mailto:"))
         intent.type = "text/html"
-        intent.putExtra(Intent.EXTRA_EMAIL, to)
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
         intent.putExtra(Intent.EXTRA_SUBJECT, title)
         intent.putExtra(Intent.EXTRA_TEXT, message)
 
